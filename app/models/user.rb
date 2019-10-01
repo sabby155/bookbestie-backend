@@ -3,5 +3,5 @@ class User < ApplicationRecord
 
     has_many :statuses
     has_many :cards, through: :statuses 
-    validates :username, presence: true, uniqueness: true, length: {minimum: 1}
+    # validates :username, presence: true, uniqueness: true, length: {minimum: 1}
 end

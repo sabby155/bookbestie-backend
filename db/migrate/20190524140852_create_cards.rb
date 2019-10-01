@@ -9,6 +9,8 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :published_date
       t.integer :page_count
       t.string :isbn
+      t.integer :rating
+      t.integer :ratings_count
 
       t.timestamps
     end

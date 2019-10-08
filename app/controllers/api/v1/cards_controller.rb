@@ -22,7 +22,7 @@ class Api::V1::CardsController < ApplicationController
             Card.find_or_create_by(    
             title: book["volumeInfo"]["title"],
             authors: book["volumeInfo"]["authors"].join(", "),
-            description: book["volumeInfo"]["description"],
+            description: book["volumeInfo"]["description"].mb_chars.limit(700) + ' [...]',
             published_date: book["volumeInfo"]["publishedDate"],
             page_count: book["volumeInfo"]["pageCount"],
             image_url: book["volumeInfo"]["imageLinks"]["thumbnail"],

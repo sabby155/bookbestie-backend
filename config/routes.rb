@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
       post "/status", to: "statuses#create"
       get "/status", to: "statuses#index"
+      patch "/status/:id", to: "statuses#update"
 
       
 

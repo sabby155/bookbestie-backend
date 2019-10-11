@@ -22,7 +22,7 @@ class Api::V1::CardsController < ApplicationController
             Card.find_or_create_by(    
             title: book["volumeInfo"]["title"],
             authors: book["volumeInfo"]["authors"].join(", "),
-            description: book["volumeInfo"]["description"].mb_chars.limit(700) + ' [...]',
+            description: book["volumeInfo"]["description"],
             published_date: book["volumeInfo"]["publishedDate"],
             page_count: book["volumeInfo"]["pageCount"],
             image_url: book["volumeInfo"]["imageLinks"]["thumbnail"],
@@ -48,7 +48,7 @@ class Api::V1::CardsController < ApplicationController
             authors: book["book_details"][0]["author"],
             description: book["book_details"][0]["description"],
             published_date: book["published_date"],
-            isbn: book["isbns"][1]["isbn10"],
+            isbn: book["isbns"][0]["isbn10"],
             rating: book["rank"],
             ratings_count: 1,
             )
@@ -58,7 +58,7 @@ class Api::V1::CardsController < ApplicationController
     end 
   
     # page_count: "null",
-    #         image_url: "null",
-    #         genre: "null",
+    # image_url: "null",
+    # genre: "null",
     
 end

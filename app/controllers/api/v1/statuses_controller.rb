@@ -14,7 +14,7 @@ class Api::V1::StatusesController < ApplicationController
 
         # book = Card.find(params[:bookId])
 
-        status = Status.create(
+        status = Status.find_or_create_by(
             user_id: user_id, 
             card_id: book_id, 
             wishlist: wishlist, 
@@ -28,7 +28,19 @@ class Api::V1::StatusesController < ApplicationController
         else 
             render json: {errors: "Unsuccessful"}    
         end     
-    end    
+    end   
+    
+    def update 
+        status = Status.find(params[:id])
+        status.update(
+            user_id: user_id, 
+            card_id: book_id, 
+            wishlist: wishlist, 
+            favorite: favorite,
+            read: read,
+            )
+        render json: status
+    end 
 
 
     # create seperate functions for wishlist, read and favorites that show only the books under that status 
